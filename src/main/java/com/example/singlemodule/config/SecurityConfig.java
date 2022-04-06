@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	// @formatter:off
+	//@formatter:off
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {
 		http
@@ -47,13 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()//요청에 대한 권한 지정
 	    .antMatchers("/admin/**").hasRole("ADMIN") //특정권한을 가진 사람만 접근 가능
 	    .antMatchers("/anonymous*").anonymous() //login되지 않은 사용자도 접근할 수 있다. 인증되지 않은 사용자가 접근 가능.
-	    .antMatchers("/login").permitAll() //login page에 한해서는 모든 접근을 허용한다.
+	    .antMatchers("/login","/list","/layout","/test").permitAll() //login page에 한해서는 모든 접근을 허용한다.
 	    .anyRequest().authenticated().and()//어더한 요청이 들어오든 보안검사를 실행
 	    .formLogin()//로그인 페이지와 기타 로그인 처리 및 성공 실패 처리를 사용하겠다는 의미
 	    .loginPage("/login")//사용자가 따로 만든 로그인페이지를 사용하려고 할 때 설정한다
 	    .loginProcessingUrl("/perform_login")//로그인 즉 인증 처리를 하는 url을 설정 //즉 html에서 이 요청이 실행되면 인증처리하는 필터가 호출 됨. 아이디와 비번을 가져와서 인증처리
 				//UsernamePasswordAuthenticationFilter가 실행되게 되는 것
-	    .defaultSuccessUrl("/")//정상적으로 인증 성공하였을 경우 이동하는 페이지를 설정하는 것이다. 설정하지 않는 경우 디폴트 값은 "/"이다.
+	    .defaultSuccessUrl("/list")//정상적으로 인증 성공하였을 경우 이동하는 페이지를 설정하는 것이다. 설정하지 않는 경우 디폴트 값은 "/"이다.
 	    .failureUrl("/login?error=true")//인증 실패했을 경우 설정. 정상적 인증 성공 후 별도의 처리가 필요한 경우는 succesHandler
 	    .failureHandler(authenticationFailureHandler())//인증 실패 후 별도의 처리가 필요한 경우 커스텀 핸들러를 등록하여 설정할 수 있다.
 	    .and()
@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    .logoutSuccessHandler(logoutSuccessHandler()) //logout 성공 후 핸들러
 	    ;
 	}
-	// @formatter:on
+	//@formatter:on
 
 	@Bean
 	public LogoutSuccessHandler logoutSuccessHandler() {

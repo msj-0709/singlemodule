@@ -1,3 +1,4 @@
+/*
 package com.example.singlemodule.service;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.singlemodule.model.GetUserResponse;
 
-@Component
+@Component //개발자가 직접 작성한 class를 bean으로 만드는 것이다. 싱글톤 클래스 빈을 생성하는 어노테이션이다.
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
@@ -27,10 +28,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	@Override
+
+	@Override //오버라이드 할 때 쓰인다. //상속시 부모클래스에 있는 메소드를 자식 메소드에서 재정의 하는 것을 말한다.
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-		String name = authentication.getName();
+		String name = (String)authentication.getName();
 		String password = authentication.getCredentials().toString();
 
 		try {
@@ -40,7 +42,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 			HttpStatus status = responeEntity.getStatusCode();
 			GetUserResponse response = responeEntity.getBody();
 
-			// String expected = passwordEncoder.encode(password); // test
+			*/
+/*String expected = passwordEncoder.encode(password); // test*//*
+
 			if (!passwordEncoder.matches(password, response.getPassword())) {
 				throw new BadCredentialsException("invalid password");
 			}
@@ -70,4 +74,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public boolean supports(Class<?> authentication) {
 		return authentication.equals(UsernamePasswordAuthenticationToken.class);
 	}
-}
+}*/

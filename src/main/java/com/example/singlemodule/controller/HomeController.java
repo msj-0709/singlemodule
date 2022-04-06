@@ -15,4 +15,19 @@ public class HomeController {
 	public String home() {
 		return "index";
 	}
+
+	@GetMapping("/list")
+	public String login() {
+		return "list";
+	}
+
+	@GetMapping("/layout")
+	public String common() {
+		return "common/layout";
+	}
+
+	@GetMapping("/test")
+	public String test() {
+		return "test";
+	}
 }

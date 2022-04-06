@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.lang.reflect.Member;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Controller
@@ -29,6 +32,7 @@ public class UserController {
         log.info("userAgent : {}", userAgent);
         return this.userInfoRepository.count();
     }
+
 
     @PostMapping({"/user"})
     @ResponseBody
