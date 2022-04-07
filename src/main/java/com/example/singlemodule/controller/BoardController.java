@@ -1,5 +1,6 @@
 package com.example.singlemodule.controller;
 
+//깃허브 브랜치 문서정 테스트//////
 import com.example.singlemodule.constant.UserStatusType;
 import com.example.singlemodule.model.BoardResponse;
 import com.example.singlemodule.model.CreateBoardRequest;
