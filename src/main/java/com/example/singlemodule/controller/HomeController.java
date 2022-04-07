@@ -13,12 +13,12 @@ public class HomeController {
 
 	@GetMapping
 	public String home() {
-		return "index";
+		return "home/index";
 	}
 
 	@GetMapping("/list")
 	public String login() {
-		return "list";
+		return "home/list";
 	}
 
 	@GetMapping("/layout")
@@ -28,6 +28,6 @@ public class HomeController {
 
 	@GetMapping("/test")
 	public String test() {
-		return "test";
+		return "home/test";
 	}
 }

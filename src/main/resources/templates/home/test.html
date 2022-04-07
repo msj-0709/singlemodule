@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="common/layout">
@@ -9,9 +10,66 @@
 <body>
 
 <div layout:fragment="content">
-    본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다본문입니다
+    <div class="container">
+
+        <div class="row" style="padding-top: 30px">
+                <div class="col-xs-12">
+                <form>
+                    <div class="col">
+                        <label>사용자명</label>
+                        <input type="text" id="inputPassword1" placeholder="Password" style="width:200px; height:20px;">
+                        <label>아이디</label>
+                        <input type="text" id="inputPassword2" placeholder="id" style="width:200px; height:20px;">
+                        <label>부서명</label>
+                        <input type="text" id="inputPassword3" placeholder="company" style="width:200px; height:20px;">
+                    </div>
+                    <div class="col">
+                        <button type="submit" >Submit</button>
+                    </div>
+                </form>
+                </div>
+
+        </div>
+
+
+
+        <div class="row"  style="padding-top: 40px">
+            <div class="col-xs-12">
+                <div id="example-table"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">ㄴㅇㄹㄴㄻㅇㄹㅇㄹ</div>
+        </div>
+
+    </div>
+
 </div>
 
 
 </body>
+
+<!-- script -->
+<link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+
+<script>
+    $(function(){
+        const table = new Tabulator("#example-table", {
+            height: "311px",
+            columns: [
+                {title: "Name", field: "name"},
+                {title: "Progress", field: "progress", hozAlign: "right", sorter: "number"},
+                {title: "Gender", field: "gender"},
+                {title: "Rating", field: "rating", hozAlign: "center"},
+                {title: "Favourite Color", field: "col"},
+                {title: "Date Of Birth", field: "dob", hozAlign: "center", sorter: "date"},
+                {title: "Driver", field: "car", hozAlign: "center"},
+            ],
+        });
+    });
+</script>
 </html>
+
+
