@@ -1,5 +1,6 @@
 package com.example.singlemodule.controller;
 
+
 import com.example.singlemodule.constant.UserStatusType;
 import com.example.singlemodule.domain.UserInfo;
 import com.example.singlemodule.model.CreateUserRequest;
@@ -14,9 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.lang.reflect.Member;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @Controller
@@ -46,7 +44,8 @@ public class UserController {
                 .status(UserStatusType.NORMAL).build());
     }
 
-    @PutMapping({"/user/{userInfoId}/password"})
+    //@PutMapping({"/user/{userInfoId}/password"})
+    @RequestMapping(value = "/user/{userInfoId}/password", produces = "application/json",  method=RequestMethod.PUT)
     @ResponseBody
     public void updatePasswordUser(@PathVariable("userInfoId") String id,
                                    @RequestBody @Valid UpdatePasswordRequest request) {
@@ -67,9 +66,9 @@ public class UserController {
 
     @GetMapping("/user")
     @ResponseBody
-    public GetUserResponse getUser(@RequestParam("username") String usrename) {
+    public GetUserResponse getUser(@RequestParam("username") String username) {
 
-        UserInfo userInfo = this.userInfoRepository.findByUsername(usrename)
+        UserInfo userInfo = this.userInfoRepository.findByUsername(username)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "not exists user"));
 
         return GetUserResponse.builder().userInfoId(userInfo.getUserInfoId()).username(userInfo.getUsername())

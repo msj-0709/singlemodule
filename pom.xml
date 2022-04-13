@@ -38,6 +38,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--maria db는 spring boot에서 관리 안 해주기 때문에 따로 버전 명시함-->
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -57,6 +64,7 @@
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>3.1.0</version>
         </dependency>
 
         <!--<dependency>
@@ -67,6 +75,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>2.1.210</version>
             <scope>runtime</scope>
         </dependency>
 

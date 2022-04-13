@@ -1,6 +1,5 @@
 package com.example.singlemodule.controller;
 
-//깃허브 브랜치 문서정 테스트//////
 import com.example.singlemodule.constant.UserStatusType;
 import com.example.singlemodule.model.BoardResponse;
 import com.example.singlemodule.model.CreateBoardRequest;
@@ -27,6 +26,8 @@ public class BoardController {
     @Autowired
     private BoardRepository boardRepository;
 
+
+
     @DeleteMapping({"/{boardId}"})
     public void delete(@PathVariable("boardId") String id) {
         boardRepository.findById(id)
@@ -40,10 +41,13 @@ public class BoardController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not exists normal user.");
     }
 
+
     @GetMapping({"/{boardId}"})
     public BoardResponse info(@PathVariable("boardId") String id) {
         return null;
     }
+
+
 
     @GetMapping
     public List<BoardResponse> listByUser(

@@ -18,12 +18,12 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "userinfo")
+@Table(name = "user_Info")
 @DynamicUpdate
 @DynamicInsert
 public class UserInfo {
     @Id
-    @Column(name = "userinfoid")
+    @Column
     private String userInfoId;
 
     @Column(updatable = false)
@@ -35,7 +35,7 @@ public class UserInfo {
     @Column
     private UserStatusType status;
 
-    @Column(name = "koreanname")
+    @Column
     private String koreanName;
 
 
